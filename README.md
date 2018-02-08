@@ -1,16 +1,29 @@
 A fork of [CoqHammer](http://cl-informatik.uibk.ac.at/cek/coqhammer/) version 1.0.6 for Coq 8.7 and 8.7.1.
 
+REQUIREMENTS
+------------
+
+- [Coq 8.7](https://coq.inria.fr/download)
+- ATPs ([Eprover](http://www.eprover.org), [Vampire](http://www.vprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
+
 INSTALLATION
 ------------
 
-If Coq 8.7 is already installed, build and install the plugin by running:
+The recommended way to build and install CoqHammer is via OPAM:
+
+```
+opam repo add proofengineering-dev http://opam-dev.proofengineering.org
+opam install icoq
+```
+
+To build and install CoqHammer manually, run:
 
 ```
 make
 make install
 ```
 
-To use the hammer you will also need some automated provers
+To use CoqHammer, you will also need some automated provers (ATPs)
 installed. More information about provers is provided below.
 
 The plugin has been tested on Linux and MacOS X. On MacOS X you need
