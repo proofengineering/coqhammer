@@ -1,88 +1,100 @@
-CoqHammer version 1.0.6 for Coq 8.7 and 8.7.1
+A Fork of CoqHammer version 1.0.6 for Coq 8.7 and 8.7.1
 
 COPYRIGHT AND LICENSE
+---------------------
 
-  Copyright (c) 2017-2018, Lukasz Czajka and Cezary Kaliszyk, University of Innsbruck
-  Distributed under the terms of LGPL 2.1, see the file "LICENSE".
+Copyright (c) 2017-2018, Lukasz Czajka and Cezary Kaliszyk, University of Innsbruck
+Distributed under the terms of LGPL 2.1, see the file "LICENSE".
 
 INSTALLATION
+------------
 
-  Given already installed Coq 8.7, install the plugin by:
+If Coq 8.7 is already installed, build and install the plugin by running:
 
-    coq_makefile -f _CoqProject -o Makefile
-    make
-    sudo make install (OR: (sudo) make install COQBIN=/path/to/coq/binaries)
+```
+make
+make install
+```
 
-  To use the hammer you will also need some automated provers
-  installed. More information about provers is provided below.
+To use the hammer you will also need some automated provers
+installed. More information about provers is provided below.
 
-  The plugin has been tested on Linux and MacOS X. On MacOS X you need
-  grep available in the path. You also need the GNU C and C++
-  compilers (gcc and g++) available in the path for installation to
-  succeed.
+The plugin has been tested on Linux and MacOS X. On MacOS X you need
+grep available in the path. You also need the GNU C and C++
+compilers (gcc and g++) available in the path for installation to
+succeed.
 
-  The command 'make install' will try to install the 'predict' program
-  into the directory specified by the COQBIN environment variable. If
-  this variable is not set then a binary directory is guessed basing
-  on the Coq library directory.
+The command 'make install' will try to install the 'predict' program
+into the directory specified by the COQBIN environment variable. If
+this variable is not set then a binary directory is guessed basing
+on the Coq library directory.
 
-  Note that some old versions of ProofGeneral encounter problems with
-  the plugin. If you use ProofGeneral you might need the most recent
-  version obtained directly from https://proofgeneral.github.io.
+Note that some old versions of ProofGeneral encounter problems with
+the plugin. If you use ProofGeneral you might need the most recent
+version obtained directly from https://proofgeneral.github.io.
 
 USAGE
+-----
 
-  In coqtop or coqide, first load the hammer plugin:
+In `coqtop` or `coqide`, first load the hammer plugin:
 
-    From Hammer Require Import Hammer.
+```coq
+From Hammer Require Import Hammer.
+```
 
-  Then the available commands are:
+Then the available commands are as follows.
 
-    hammer                           Runs the hammer tactic.
-    Hammer_cleanup                   Resets the hammer cache.
-    Hammer_export Dir "dir"          Exports all visible objects to dir.
-    Hammer_version                   Prints the version of CoqHammer.
+command                          | description
+-------------------------------- | ------------------------------------
+`hammer`                         |  Runs the hammer tactic.
+`Hammer_cleanup`                 |  Resets the hammer cache.
+`Hammer_export Dir "dir"`        |  Exports all visible objects to dir.
+`Hammer_version`                 |  Prints the version of CoqHammer.
 
-  More actual examples are given in the "examples" directory.
+More actual examples are given in the `examples` directory.
 
-  The intended use of the "hammer" tactic is to replace it upon
-  success with the reconstruction tactic shown in the response
-  window. This reconstruction tactic has no time limits and makes no
-  calls to external ATPs. The success of the "hammer" tactic itself is
-  not guaranteed to be reproducible.
+The intended use of the `hammer` tactic is to replace it upon
+success with the reconstruction tactic shown in the response
+window. This reconstruction tactic has no time limits and makes no
+calls to external ATPs. The success of the "hammer" tactic itself is
+not guaranteed to be reproducible.
 
 INSTALLATION OF FIRST ORDER PROVERS
+-----------------------------------
 
-  To use the plugin you need at least one of the following ATPs
-  available in the path: Eprover (eprover), Vampire (vampire), Z3
-  (z3_tptp). It is recommended to have all three ATPs.
+To use the plugin you need at least one of the following ATPs
+available in the path: Eprover (eprover), Vampire (vampire), Z3
+(z3_tptp). It is recommended to have all three ATPs.
 
-  Eprover may be downloaded from http://www.eprover.org.
-  Vampire may be obtained from http://www.vprover.org.
-  Z3 may be downloaded from https://github.com/Z3Prover/z3/releases.
+Eprover may be downloaded from http://www.eprover.org.
+Vampire may be obtained from http://www.vprover.org.
+Z3 may be downloaded from https://github.com/Z3Prover/z3/releases.
 
-  Note that the default version of Z3 does not support the TPTP format.
-  You need to compile a TPTP frontend located in examples/tptp in
-  the Z3 source package.
+Note that the default version of Z3 does not support the TPTP format.
+You need to compile a TPTP frontend located in examples/tptp in
+the Z3 source package.
 
 TACTICS
+-------
 
-  The Reconstr module contains the reconstruction tactics which may
-  also be used directly in your proof scripts. In contrast to the
-  "hammer" tactic they do not invoke external ATPs, they do not know
-  anything about accessible lemmas (you need to add any necessary
-  lemmas to the context with "generalize" or "pose"), and they never
-  unfold any constants except basic logical operators (if necessary
-  you need to unfold constants manually beforehand). To be able to
-  directly use these tactics type:
+The Reconstr module contains the reconstruction tactics which may
+also be used directly in your proof scripts. In contrast to the
+"hammer" tactic they do not invoke external ATPs, they do not know
+anything about accessible lemmas (you need to add any necessary
+lemmas to the context with "generalize" or "pose"), and they never
+unfold any constants except basic logical operators (if necessary
+you need to unfold constants manually beforehand). To be able to
+directly use these tactics type:
 
-  From Hammer Require Import Reconstr.
+```coq
+From Hammer Require Import Reconstr.
+```
 
-  The most useful tactics are:
+The most useful tactics are:
 
-  * sauto
+- `sauto`
 
-  A "super" version of intuition/auto. Tries to simplify the goal and
+  A "super" version of `intuition`/`auto`. Tries to simplify the goal and
   possibly solve it. Does not perform much of actual proof search
   (beyond what "intuition" already does). It is designed in such a way
   as to terminate in a short time in most circumstances. It is
@@ -98,7 +110,7 @@ TACTICS
   on auto-generated hypothesis names. Examples of this are provided in
   examples/imp.v and examples/combs.v.
 
-  * ycrush
+- `ycrush`
 
   Tries various heuristics and performs some limited proof
   search. Usually stronger than sauto, but may take a long time if it
@@ -106,16 +118,16 @@ TACTICS
   rewriting with rewrite hints in the yhints database. One commonly
   uses ycrush after sauto for goals which sauto could not solve.
 
-  * yelles n
+- `yelles n`
 
   Performs proof search up to depth n. May be very slow for n larger
   than 3-4.
 
-  * scrush
+- `scrush`
 
-  Essentially, a combination of sauto and ycrush.
+  Essentially, a combination of `sauto` and `ycrush`.
 
-  * blast
+- `blast`
 
   This tactic instantiates some universally quantified hypotheses,
   calls sauto, performs shallow proof search, and repeats the whole
@@ -123,7 +135,9 @@ TACTICS
   solve the goal.
 
 FURTHER COQ HAMMER OPTIONS
+--------------------------
 
+```coq
 Set/Unset Hammer Debug.
 Set Hammer GSMode n.
 (* The hammer may operate in one of two modes: gs-mode or the ordinary
@@ -169,15 +183,18 @@ Set/Unset Hammer ClosureGuards.
    may help with functional extensionality; set this to "on" if you
    use functional extensionality and get many unreconstructible
    proofs; default: off *)
+```
 
 BUGS
+----
 
-  In case you encounter any bugs, report them to:
-  lukaszcz@mimuw.edu.pl. Include a minimal reproducible example of the
-  bug.
+In case you encounter any bugs, report them to:
+lukaszcz@mimuw.edu.pl. Include a minimal reproducible example of the
+bug.
 
 KNOWN BUGS
+----------
 
-  Occasionally, the hammer tactic hangs or outputs a wrong
-  reconstruction tactic. The authors believe that this is due to an
-  error in Coq's "timeout" tactical.
+Occasionally, the hammer tactic hangs or outputs a wrong
+reconstruction tactic. The authors believe that this is due to an
+error in Coq's `timeout` tactical.
