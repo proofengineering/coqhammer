@@ -1,11 +1,5 @@
 A Fork of CoqHammer version 1.0.6 for Coq 8.7 and 8.7.1
 
-COPYRIGHT AND LICENSE
----------------------
-
-Copyright (c) 2017-2018, Lukasz Czajka and Cezary Kaliszyk, University of Innsbruck
-Distributed under the terms of LGPL 2.1, see the file "LICENSE".
-
 INSTALLATION
 ------------
 
@@ -20,12 +14,12 @@ To use the hammer you will also need some automated provers
 installed. More information about provers is provided below.
 
 The plugin has been tested on Linux and MacOS X. On MacOS X you need
-grep available in the path. You also need the GNU C and C++
-compilers (gcc and g++) available in the path for installation to
+`grep` available in the path. You also need the GNU C and C++
+compilers (`gcc` and `g++`) available in the PATH for installation to
 succeed.
 
-The command 'make install' will try to install the 'predict' program
-into the directory specified by the COQBIN environment variable. If
+The command 'make install' will try to install the `predict` program
+into the directory specified by the `COQBIN` environment variable. If
 this variable is not set then a binary directory is guessed basing
 on the Coq library directory.
 
@@ -36,10 +30,10 @@ version obtained directly from https://proofgeneral.github.io.
 USAGE
 -----
 
-In `coqtop` or `coqide`, first load the hammer plugin:
+In `coqtop` or `coqide`, first load the Hammer plugin:
 
 ```coq
-From Hammer Require Import Hammer.
+Require Import Hammer.Hammer.
 ```
 
 Then the available commands are as follows.
@@ -63,8 +57,8 @@ INSTALLATION OF FIRST ORDER PROVERS
 -----------------------------------
 
 To use the plugin you need at least one of the following ATPs
-available in the path: Eprover (eprover), Vampire (vampire), Z3
-(z3_tptp). It is recommended to have all three ATPs.
+available in the path: Eprover (`eprover`), Vampire (`vampire`), Z3
+(`z3_tptp`). It is recommended to have all three ATPs.
 
 Eprover may be downloaded from http://www.eprover.org.
 Vampire may be obtained from http://www.vprover.org.
@@ -87,7 +81,7 @@ you need to unfold constants manually beforehand). To be able to
 directly use these tactics type:
 
 ```coq
-From Hammer Require Import Reconstr.
+Require Import Hammer.Reconstr.
 ```
 
 The most useful tactics are:
@@ -134,7 +128,7 @@ The most useful tactics are:
   process with new instantiations. The tactic will loop if it cannot
   solve the goal.
 
-FURTHER COQ HAMMER OPTIONS
+FURTHER COQHAMMER OPTIONS
 --------------------------
 
 ```coq
@@ -185,16 +179,15 @@ Set/Unset Hammer ClosureGuards.
    proofs; default: off *)
 ```
 
-BUGS
-----
-
-In case you encounter any bugs, report them to:
-lukaszcz@mimuw.edu.pl. Include a minimal reproducible example of the
-bug.
-
 KNOWN BUGS
 ----------
 
-Occasionally, the hammer tactic hangs or outputs a wrong
+Occasionally, the `hammer` tactic hangs or outputs a wrong
 reconstruction tactic. The authors believe that this is due to an
 error in Coq's `timeout` tactical.
+
+COPYRIGHT AND LICENSE
+---------------------
+
+Copyright (c) 2017-2018, Lukasz Czajka and Cezary Kaliszyk, University of Innsbruck
+Distributed under the terms of LGPL 2.1, see the file "LICENSE".
