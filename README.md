@@ -1,4 +1,4 @@
-A Fork of CoqHammer version 1.0.6 for Coq 8.7 and 8.7.1
+A fork of [CoqHammer](http://cl-informatik.uibk.ac.at/cek/coqhammer/) version 1.0.6 for Coq 8.7 and 8.7.1.
 
 INSTALLATION
 ------------
