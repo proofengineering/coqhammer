@@ -16,14 +16,9 @@ opam repo add proofengineering-dev http://opam-dev.proofengineering.org
 opam install coqhammer
 ```
 
-To build and install CoqHammer manually, run:
+To build and install CoqHammer manually, run `make` followed by `make install`.
 
-```
-make
-make install
-```
-
-To use CoqHammer, you will also need some automated provers (ATPs)
+To use CoqHammer, you will also need to have some automated provers (ATPs)
 installed. More information about provers is provided below.
 
 The plugin has been tested on Linux and MacOS X. On MacOS X you need
@@ -49,7 +44,7 @@ In `coqtop` or `coqide`, first load the Hammer plugin:
 Require Import Hammer.Hammer.
 ```
 
-Then the available commands are as follows.
+Then, the available commands are as follows:
 
 command                          | description
 -------------------------------- | ------------------------------------
@@ -63,7 +58,7 @@ More actual examples are given in the [`examples`](examples) directory.
 The intended use of the `hammer` tactic is to replace it upon
 success with the reconstruction tactic shown in the response
 window. This reconstruction tactic has no time limits and makes no
-calls to external ATPs. The success of the "hammer" tactic itself is
+calls to external ATPs. The success of the `hammer` tactic itself is
 not guaranteed to be reproducible.
 
 INSTALLATION OF FIRST ORDER PROVERS
@@ -71,10 +66,10 @@ INSTALLATION OF FIRST ORDER PROVERS
 
 To use the plugin you need at least one of the following ATPs
 available in the path: Eprover (`eprover`), Vampire (`vampire`), Z3
-(`z3_tptp`). It is recommended to have all three ATPs.
+(`z3_tptp`). It is recommended to have all three ATPs installed.
 
 Eprover may be downloaded from http://www.eprover.org.
-Vampire may be obtained from https://github.com/vprover/vampire/releases
+Vampire may be obtained from https://github.com/vprover/vampire/releases.
 Z3 may be downloaded from https://github.com/Z3Prover/z3/releases.
 
 Note that the default version of Z3 does not support the TPTP format.
