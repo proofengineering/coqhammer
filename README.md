@@ -1,10 +1,10 @@
-A fork of [CoqHammer](http://cl-informatik.uibk.ac.at/cek/coqhammer/) version 1.0.6 for Coq 8.7 and 8.7.1.
+A fork of [CoqHammer](http://cl-informatik.uibk.ac.at/cek/coqhammer/).
 
 REQUIREMENTS
 ------------
 
 - [Coq 8.7](https://coq.inria.fr/download)
-- ATPs ([Eprover](http://www.eprover.org), [Vampire](http://www.vprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
+- automated provers ([Eprover](http://www.eprover.org), [Vampire](http://www.vprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
 
 INSTALLATION
 ------------
@@ -33,7 +33,7 @@ succeed.
 
 The command 'make install' will try to install the `predict` program
 into the directory specified by the `COQBIN` environment variable. If
-this variable is not set then a binary directory is guessed basing
+this variable is not set then a binary directory is guessed based
 on the Coq library directory.
 
 Note that some old versions of ProofGeneral encounter problems with
@@ -58,7 +58,7 @@ command                          | description
 `Hammer_export Dir "dir"`        |  Exports all visible objects to dir.
 `Hammer_version`                 |  Prints the version of CoqHammer.
 
-More actual examples are given in the `examples` directory.
+More actual examples are given in the [`examples`](examples) directory.
 
 The intended use of the `hammer` tactic is to replace it upon
 success with the reconstruction tactic shown in the response
@@ -84,11 +84,11 @@ the Z3 source package.
 TACTICS
 -------
 
-The Reconstr module contains the reconstruction tactics which may
+The `Reconstr` module contains the reconstruction tactics which may
 also be used directly in your proof scripts. In contrast to the
-"hammer" tactic they do not invoke external ATPs, they do not know
+`hammer` tactic they do not invoke external ATPs, they do not know
 anything about accessible lemmas (you need to add any necessary
-lemmas to the context with "generalize" or "pose"), and they never
+lemmas to the context with `generalize` or `pose`), and they never
 unfold any constants except basic logical operators (if necessary
 you need to unfold constants manually beforehand). To be able to
 directly use these tactics type:
@@ -106,28 +106,28 @@ The most useful tactics are:
   (beyond what "intuition" already does). It is designed in such a way
   as to terminate in a short time in most circumstances. It is
   possible to customize this tactic by adding rewrite hints to the
-  yhints database.
+  `yhints` database.
 
   WARNING: This tactic may change the proof state unpredictably and
   introduce randomly named hypotheses into the context.
 
-  It is nonetheless useful to sometimes use "sauto" before a call to
-  "hammer". Then the list of hypotheses in the reconstruction tactic
-  may usually be replaced by Reconstr.AllHyps, removing any dependence
+  It is nonetheless useful to sometimes use `sauto` before a call to
+  `hammer`. Then the list of hypotheses in the reconstruction tactic
+  may usually be replaced by `Reconstr.AllHyps`, removing any dependence
   on auto-generated hypothesis names. Examples of this are provided in
-  examples/imp.v and examples/combs.v.
+  [`examples/imp.v`](examples/imp.v) and [`examples/combs.v`](examples/combs.v).
 
 - `ycrush`
 
   Tries various heuristics and performs some limited proof
-  search. Usually stronger than sauto, but may take a long time if it
-  cannot find a proof. In contrast to sauto, ycrush does not perform
-  rewriting with rewrite hints in the yhints database. One commonly
-  uses ycrush after sauto for goals which sauto could not solve.
+  search. Usually stronger than `sauto`, but may take a long time if it
+  cannot find a proof. In contrast to `sauto`, `ycrush` does not perform
+  rewriting with rewrite hints in the `yhints` database. One commonly
+  uses `ycrush` after `sauto` for goals which `sauto` could not solve.
 
 - `yelles n`
 
-  Performs proof search up to depth n. May be very slow for n larger
+  Performs proof search up to depth `n`. May be very slow for `n` larger
   than 3-4.
 
 - `scrush`
@@ -137,7 +137,7 @@ The most useful tactics are:
 - `blast`
 
   This tactic instantiates some universally quantified hypotheses,
-  calls sauto, performs shallow proof search, and repeats the whole
+  calls `sauto`, performs shallow proof search, and repeats the whole
   process with new instantiations. The tactic will loop if it cannot
   solve the goal.
 
@@ -203,4 +203,4 @@ COPYRIGHT AND LICENSE
 ---------------------
 
 Copyright (c) 2017-2018, Lukasz Czajka and Cezary Kaliszyk, University of Innsbruck
-Distributed under the terms of LGPL 2.1, see the file "LICENSE".
+Distributed under the terms of LGPL 2.1, see the file [LICENSE](LICENSE).
