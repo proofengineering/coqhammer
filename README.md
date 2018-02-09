@@ -9,7 +9,7 @@ REQUIREMENTS
 INSTALLATION
 ------------
 
-The recommended way to build and install CoqHammer is via OPAM:
+The recommended way to build and install CoqHammer is via [OPAM](http://opam.ocaml.org/doc/Install.html):
 
 ```
 opam repo add proofengineering-dev http://opam-dev.proofengineering.org
