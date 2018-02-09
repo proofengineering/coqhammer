@@ -4,7 +4,7 @@ REQUIREMENTS
 ------------
 
 - [Coq 8.7](https://coq.inria.fr/download)
-- automated provers ([Eprover](http://www.eprover.org), [Vampire](http://www.vprover.org), and/or [Z3](https://github.com/Z3Prover/z3/releases))
+- automated provers ([Eprover](http://www.eprover.org), [Vampire](https://github.com/vprover/vampire/releases), and/or [Z3](https://github.com/Z3Prover/z3/releases))
 
 INSTALLATION
 ------------
@@ -74,7 +74,7 @@ available in the path: Eprover (`eprover`), Vampire (`vampire`), Z3
 (`z3_tptp`). It is recommended to have all three ATPs.
 
 Eprover may be downloaded from http://www.eprover.org.
-Vampire may be obtained from http://www.vprover.org.
+Vampire may be obtained from https://github.com/vprover/vampire/releases
 Z3 may be downloaded from https://github.com/Z3Prover/z3/releases.
 
 Note that the default version of Z3 does not support the TPTP format.
