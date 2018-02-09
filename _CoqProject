@@ -1,4 +1,5 @@
--R theories Hammer
+-Q theories Hammer
+-Q src Hammer
 -I src
 src/hammer_errors.ml
 src/hhlib.ml
