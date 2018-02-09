@@ -13,7 +13,7 @@ The recommended way to build and install CoqHammer is via OPAM:
 
 ```
 opam repo add proofengineering-dev http://opam-dev.proofengineering.org
-opam install icoq
+opam install coqhammer
 ```
 
 To build and install CoqHammer manually, run:
